@@ -5,8 +5,9 @@ jobs:
     working_directory: ~/community-shield-server
     docker:
       - image: circleci/node:10.16.3
-    step:
+    steps:
       - checkout
+
       - restore_cache:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
