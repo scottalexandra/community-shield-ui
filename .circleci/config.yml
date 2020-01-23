@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/community-shield-server
+    docker:
+      - image: circleci/node:10.16.3
+    step:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies--{{ checksum "package.json" }}
+      - run: yarn test
