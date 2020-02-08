@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import App from './App';
+import LoginForm from './LoginForm';
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const { getByText } = render(<LoginForm />);
+  const header = getByText(/Hello/i);
+  expect(header).toBeInTheDocument();
 });
 
 it('renders without crashing', () => {
-  shallow(<App />);
+  shallow(<LoginForm />);
 });
